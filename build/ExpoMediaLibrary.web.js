@@ -7,7 +7,7 @@ const noPermissionResponse = {
 };
 export default {
     get name() {
-        return 'ExponentMediaLibrary';
+        return 'ExpoMediaLibrary';
     },
     get CHANGE_LISTENER_NAME() {
         return 'mediaLibraryDidChange';
@@ -38,4 +38,4 @@ export default {
         return noPermissionResponse;
     },
 };
-//# sourceMappingURL=ExponentMediaLibrary.web.js.map
+//# sourceMappingURL=ExpoMediaLibrary.web.js.map
