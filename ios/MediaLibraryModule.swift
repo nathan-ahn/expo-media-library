@@ -132,8 +132,8 @@ public class MediaLibraryModule: Module, PhotoLibraryObserverHandler {
           return
         }
         self.delegates.remove(delegate)
-        guard error != nil else {
-          promise.reject(SaveAssetException())
+        guard error == nil else {
+          promise.reject(SpecificSaveAssetException("\(String(describing: error))"))
           return
         }
         promise.resolve()
@@ -145,11 +145,7 @@ public class MediaLibraryModule: Module, PhotoLibraryObserverHandler {
           return
         }
 
-        guard let image = UIImage(data: try Data(contentsOf: localUrl)) else {
-          promise.reject(MissingFileException(localUrl.absoluteString))
-          return
-        }
-        delegate.writeImage(image, withCallback: callback)
+        delegate.writeImage(localUrl, withCallback: callback)
         return
       } else if assetType == .video {
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(localUrl.path) {

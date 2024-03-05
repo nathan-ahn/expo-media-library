@@ -36,6 +36,12 @@ internal class SaveAssetException: Exception {
   }
 }
 
+internal class SpecificSaveAssetException: GenericException<String> {
+  override var reason: String {
+    "Asset couldn't be saved to photo library due to \(param)"
+  }
+}
+
 internal class MissingPListKeyException: GenericException<String> {
   override var reason: String {
     "This app is missing \(param). Add this entry to your bundle's Info.plist"
